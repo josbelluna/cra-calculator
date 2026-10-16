@@ -124,22 +124,27 @@ export function ProfileForm({ profile, onChange }: { profile: Profile; onChange:
                     set("highWageJobs", profile.highWageJobs.map((j, k) => (k === i ? { ...j, noc } : j)))
                   }
                 />
-                <input
-                  aria-label={`High-wage job ${i + 1} months`}
-                  className={`${inputClass} w-16 shrink-0`}
-                  type="number"
-                  min={0}
-                  max={120}
-                  value={job.months}
-                  onChange={(e) =>
-                    set(
-                      "highWageJobs",
-                      profile.highWageJobs.map((j, k) =>
-                        k === i ? { ...j, months: Math.max(0, Math.min(120, Number(e.target.value) || 0)) } : j,
-                      ),
-                    )
-                  }
-                />
+                <label className="relative w-20 shrink-0">
+                  <input
+                    aria-label={`High-wage job ${i + 1} months`}
+                    className={`${inputClass} pr-7`}
+                    type="number"
+                    min={0}
+                    max={120}
+                    value={job.months}
+                    onChange={(e) =>
+                      set(
+                        "highWageJobs",
+                        profile.highWageJobs.map((j, k) =>
+                          k === i ? { ...j, months: Math.max(0, Math.min(120, Number(e.target.value) || 0)) } : j,
+                        ),
+                      )
+                    }
+                  />
+                  <span className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-xs text-zinc-500">
+                    mo
+                  </span>
+                </label>
                 <button
                   type="button"
                   aria-label={`Remove high-wage job ${i + 1}`}
