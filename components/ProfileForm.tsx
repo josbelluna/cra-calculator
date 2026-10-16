@@ -2,7 +2,7 @@
 
 import { findNoc } from "@/lib/highWageNocs";
 import { EDUCATION_LEVELS, type Profile } from "@/lib/profile";
-import { Card, ClbInputs, Field, Select, Toggle, buttonClass, inputClass, range } from "./fields";
+import { Card, ClbInputs, Field, Select, Toggle, buttonClass, inputClass, range, selectClass } from "./fields";
 import { TierBadge } from "./TierBadge";
 
 const EDUCATION_OPTIONS = EDUCATION_LEVELS.map((e) => ({ value: e.id, label: e.label }));
@@ -203,7 +203,7 @@ export function ProfileForm({ profile, onChange }: { profile: Profile; onChange:
             />
             <Field label="Canadian post-secondary education">
               <select
-                className={inputClass}
+                className={selectClass}
                 value={profile.canadianEducation}
                 onChange={(e) => set("canadianEducation", e.target.value as Profile["canadianEducation"])}
               >

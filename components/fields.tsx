@@ -2,7 +2,9 @@ import type { ReactNode } from "react";
 import type { Clb } from "@/lib/profile";
 
 export const inputClass =
-  "h-8 w-full rounded-md border border-zinc-300 bg-white px-2 text-sm outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 dark:border-zinc-700 dark:bg-zinc-900";
+  "h-8 w-full rounded-md border border-zinc-300 bg-white px-2 text-sm text-zinc-900 outline-none dark:text-zinc-100 focus:border-red-600 focus:ring-1 focus:ring-red-600 dark:border-zinc-700 dark:bg-zinc-900";
+
+export const selectClass = `${inputClass} cursor-pointer truncate pr-6`;
 
 export const buttonClass =
   "h-8 rounded-md border border-zinc-300 px-2.5 text-xs font-medium hover:bg-zinc-100 disabled:opacity-40 disabled:hover:bg-transparent dark:border-zinc-700 dark:hover:bg-zinc-800";
@@ -44,7 +46,7 @@ export function Select<T extends string | number>({
   return (
     <Field label={label} className={className}>
       <select
-        className={inputClass}
+        className={selectClass}
         value={String(value)}
         onChange={(e) => {
           const match = options.find((o) => String(o.value) === e.target.value);
@@ -98,7 +100,7 @@ export function ClbInputs({ label, value, onChange }: { label: string; value: Cl
             </span>
             <select
               aria-label={`${label} ${key}`}
-              className={inputClass}
+              className={selectClass}
               value={value[key]}
               onChange={(e) => onChange({ ...value, [key]: Number(e.target.value) })}
             >
